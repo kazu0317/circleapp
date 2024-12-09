@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('univ')->nullable();
+            $table->integer('grade')->nullable();
+            $table->integer('hard_experience')->nullable();
+            $table->integer('soft_experience')->nullable();
+            $table->string('hobby')->nullable();
         });
     }
 
