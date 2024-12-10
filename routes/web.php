@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/calendar', [EventController::class, 'show'])->name("show"); // カレンダー表示
+
+// 以下を追記
+Route::post('/calendar/create', [EventController::class, 'create'])->name("create"); // 予定の新規追加
+
+Route::post('/calendar/get',  [EventController::class, 'get'])->name("get"); // DBに登録した予定を取得
+
+Route::put('/calendar/update', [EventController::class, 'update'])->name("update"); // 予定の更新
+
 require __DIR__.'/auth.php';
+
