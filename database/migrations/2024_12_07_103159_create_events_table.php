@@ -9,15 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+   
+    public function up()
     {
+        // 以下のようなカラム構成にする
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->integer('upper')->comment('参加上限')->nullable();
+            $table->string('event_title')->comment('イベント名');
+            $table->string('event_body')->nullable()->comment('イベント内容');
+            $table->date('start_date')->comment('開始日');
+            $table->date('end_date')->comment('終了日');
+            $table->string('event_color')->comment('背景色');
+            $table->string('event_border_color')->comment('枠線色');
             $table->timestamps();
-            $table->string('title');
-            $table->string('date');
-            $table->string('upper');
         });
+
+       
     }
 
     /**
