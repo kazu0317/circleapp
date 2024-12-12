@@ -22,6 +22,8 @@
                     <option value="blue" selected>青</option>
                     <option value="green">緑</option>
                     </select>
+                    <label for="upper">参加上限</label>
+                    <input type="number" id="upper" name=upeer> 
                     <button type="button" onclick="closeAddModal()">キャンセル</button>
                     <button type="submit">決定</button>
                 </form>
@@ -53,6 +55,14 @@
                     <button type="button" onclick="closeUpdateModal()">キャンセル</button>
                     <button type="submit">決定</button>
                 </form>
+           <!--（ここから）追記 -->
+           <form id="delete-form" method="post" action="{{ route('delete') }}">
+                    @csrf
+                    @method('DELETE')
+                    <input type="hidden" id="delete-id" name="id" value="" />
+                    <button class="delete" type="button" onclick="deleteEvent()">削除</button>
+                </form>
+<!-- （ここまで） -->
             </div>
         </div>
 <!--（ここまで） -->

@@ -85,6 +85,7 @@ if (calendarEl) {
     eventClick: function(info) {
         // console.log(info.event); // info.event内に予定の全情報が入っているので、必要に応じて参照すること
         document.getElementById("id").value = info.event.id;
+        document.getElementById("delete-id").value = info.event.id;
         document.getElementById("event_title").value = info.event.title;
         document.getElementById("start_date").value = formatDate(info.event.start);
         document.getElementById("end_date").value = formatDate(info.event.end, "end");
@@ -111,6 +112,16 @@ window.closeAddModal = function(){
 // 予定編集モーダルを閉じる
 window.closeUpdateModal = function(){
     document.getElementById('modal-update').style.display = 'none';
+}
+// （ここまで）
+
+//（ここから）追記
+window.deleteEvent = function(){
+    'use strict'
+
+    if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+        document.getElementById('delete-form').submit();
+    }
 }
 // （ここまで）
 }

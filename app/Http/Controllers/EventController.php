@@ -83,6 +83,17 @@ class EventController extends Controller
         // カレンダー表示画面にリダイレクトする
         return redirect(route("show"));
     }
-//（ここまで）
+        //（ここまで）
+
+        //（ここから）追記
+            // 予定の削除
+    public function delete(Request $request, Event $event){
+        // 削除する予定をDBから探し（find）、DBから物理削除する（delete）
+        $event->find($request->input('id'))->delete();
+
+        // カレンダー表示画面にリダイレクトする
+        return redirect(route("show"));
+    }
+        //（ここまで）
 }
 

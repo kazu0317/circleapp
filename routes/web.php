@@ -38,5 +38,8 @@ Route::post('/calendar/get',  [EventController::class, 'get'])->name("get"); // 
 
 Route::put('/calendar/update', [EventController::class, 'update'])->name("update"); // 予定の更新
 
+// 以下を追記
+Route::delete('/calendar/delete', [EventController::class, 'delete'])->name("delete"); // 予定の削除
+
 require __DIR__.'/auth.php';
 
