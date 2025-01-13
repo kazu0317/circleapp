@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
     use HasFactory;
     // （ここから）追記
     // Controllerのfill用
@@ -17,6 +26,11 @@ class Event extends Model
         'end_date',
         'event_color',
         'event_border_color',
+        'total_amount',
+        'per_person',
+        'upper'
     ];
 // （ここまで）
 }
+
+

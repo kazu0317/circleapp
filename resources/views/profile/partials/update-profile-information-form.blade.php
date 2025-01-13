@@ -46,7 +46,37 @@
                 </div>
             @endif
         </div>
+        
 
+        <div>
+            <x-input-label for="univ" :value="__('Univ')" />
+            <x-text-input id="" name="univ" type="text" class="mt-1 block w-full" :value="old('univ', $user->univ)" required autofocus autocomplete="univ" />
+            <x-input-error class="mt-2" :messages="$errors->get('univ')" />
+        </div>
+
+        <div>
+            <x-input-label for="grade" :value="__('Grade')" />
+            <x-text-input id="" name="grade" type="number" class="mt-1 block w-full" :value="old('grade', $user->grade)" required autofocus autocomplete="grade" />
+            <x-input-error class="mt-2" :messages="$errors->get('grade')" />
+        </div>
+
+        <div>
+            <x-input-label for="hard_experience" :value="__('Hard_experience')" />
+            <x-text-input id="" name="hard_experience" type="number" class="mt-1 block w-full" :value="old('hard_experience', $user->hard_experience)" required autofocus autocomplete="hard_experience" />
+            <x-input-error class="mt-2" :messages="$errors->get('hard_experience')" />
+        </div>
+
+        <div>
+            <x-input-label for="soft_experience" :value="__('Soft_experience')" />
+            <x-text-input id="" name="soft_experience" type="number" class="mt-1 block w-full" :value="old('soft_experience', $user->soft_experience)" required autofocus autocomplete="soft_experience" />
+            <x-input-error class="mt-2" :messages="$errors->get('soft_experience')" />
+        </div>
+
+        <div>
+            <x-input-label for="hobby" :value="__('Hobby')" />
+            <x-text-input id="" name="hobby" type="text" class="mt-1 block w-full" :value="old('hobby', $user->hobby)" required autofocus autocomplete="hobby" />
+            <x-input-error class="mt-2" :messages="$errors->get('hobby')" />
+        </div>
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
@@ -60,5 +90,6 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
+       
     </form>
 </section>

@@ -83,15 +83,45 @@ if (calendarEl) {
 // （ここから）追記2
     // 予定をクリックすると予定編集モーダルが表示される
     eventClick: function(info) {
-        // console.log(info.event); // info.event内に予定の全情報が入っているので、必要に応じて参照すること
+        console.log(info.event); // info.event の中身を確認
+        const applicationCount = info.event.extendedProps.application_count;
+        const upperLimit = info.event.extendedProps.upper; // 参加可能な上限数
+        const totalAmount = info.event.extendedProps.total_amount;
+        // イベント情報をモーダルにセット
+        console.log(info.event.extendedProps);
         document.getElementById("id").value = info.event.id;
+        document.getElementById("registerid").value = info.event.id;
         document.getElementById("delete-id").value = info.event.id;
         document.getElementById("event_title").value = info.event.title;
         document.getElementById("start_date").value = formatDate(info.event.start);
         document.getElementById("end_date").value = formatDate(info.event.end, "end");
         document.getElementById("event_body").value = info.event.extendedProps.description;
         document.getElementById("event_color").value = info.event.backgroundColor;
-
+        document.getElementById("upper").valueAsNumber = upperLimit;
+        document.getElementById("total_amount").valueAsNumber = totalAmount;
+        // per_person をモーダルの <p> 要素に表示
+        const perPersonDisplay = document.getElementById("per_person_display");
+        const perPersonValue = info.event.extendedProps.per_person;
+        if (info.event.extendedProps.per_person) {
+            perPersonDisplay.textContent = `参加費用: ${perPersonValue} 円`;
+        } else {
+            perPersonDisplay.textContent = '参加費用は設定されていません。';
+        }
+        // 「参加」ボタンと「不参加」ボタンの表示・非表示を制御
+        const joinButton = document.getElementById("join-button");
+        const leaveButton = document.getElementById("leave-button");
+    
+        if (applicationCount >= upperLimit) {
+            // 上限に達している場合は「参加」を非表示
+            joinButton.style.display = "none";
+            leaveButton.style.display = "none"; // 必要に応じて
+            alert("このイベントは参加可能人数の上限に達しています。");
+        } else {
+            // 上限に達していない場合は「参加」を表示
+            joinButton.style.display = "inline-block";
+            leaveButton.style.display = "inline-block"; // 必要に応じて
+        }
+    
         // 予定編集モーダルを開く
         document.getElementById('modal-update').style.display = 'flex';
     },
