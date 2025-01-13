@@ -23,19 +23,23 @@
                     <option value="green">緑</option>
                     </select>
                     <label for="upper">参加上限</label>
-                    <input type="number" id="upper" name=upeer> 
+                    <input type="number" id="new-upper" name="upper"> 
+                   
                     <button type="button" onclick="closeAddModal()">キャンセル</button>
                     <button type="submit">決定</button>
                 </form>
+
             </div>
-         </div>
+            
+            
+        </div>
 <!-- （ここまで） -->
 
 <!--（ここから）追記1 -->
         <!-- カレンダー編集モーダル -->
         <div id="modal-update" class="modal">
             <div class="modal-contents">
-                <form method="POST" action="{{ route('update') }}" >
+                <form method="POST" action="{{ route('update') }}">
                     @csrf
                     @method('PUT')
                     <input type="hidden" id="id" name="id" value="" />
@@ -52,9 +56,20 @@
                         <option value="blue">青</option>
                         <option value="green">緑</option>
                     </select>
+                    <label for="upper">参加上限</label>
+                    <input class="upper" type=number id="upper" name="upper" value="" />
+                    <label for="total_amount">合計金額</label>
+                    <input type="number" id="total_amount" name="total_amount" value="" />
+                    <p id="per_person_display">参加費用は設定されていません。</p>
                     <button type="button" onclick="closeUpdateModal()">キャンセル</button>
                     <button type="submit">決定</button>
                 </form>
+                <form method="POST" action="{{ route('events.register') }}">
+                    @csrf
+                    <input type="hidden" id="registerid" name="event_id" value="" />
+                    <button type="" id="join-button" name="action" value="参加">参加</button>
+                    <button type="submit" id="leave-button" name="action" value="不参加">不参加</button>
+                 </form>
            <!--（ここから）追記 -->
            <form id="delete-form" method="post" action="{{ route('delete') }}">
                     @csrf
@@ -63,6 +78,7 @@
                     <button class="delete" type="button" onclick="deleteEvent()">削除</button>
                 </form>
 <!-- （ここまで） -->
+ 
             </div>
         </div>
 <!--（ここまで） -->
