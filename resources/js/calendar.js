@@ -122,8 +122,9 @@ if (calendarEl) {
             leaveButton.style.display = "inline-block"; // 必要に応じて
         }
     
-        // 予定編集モーダルを開く
-        document.getElementById('modal-update').style.display = 'flex';
+        const modal = document.getElementById('modal-update');
+        modal.classList.remove('hidden'); // `hidden`クラスを削除
+        modal.classList.add('flex'); // `flex`クラスを追加
     },
 // （ここまで）
   });
@@ -141,7 +142,9 @@ window.closeAddModal = function(){
 //（ここから）追記
 // 予定編集モーダルを閉じる
 window.closeUpdateModal = function(){
-    document.getElementById('modal-update').style.display = 'none';
+    const modal = document.getElementById('modal-update');
+    modal.classList.add('hidden'); // 非表示にする
+    modal.classList.remove('flex'); // 表示スタイルを削除
 }
 // （ここまで）
 

@@ -4,7 +4,7 @@
 
          <!--（ここから）追記1 -->
          <!-- カレンダー新規追加モーダル -->
-         <div id="modal-add" class="modal">
+         <div id="modal-add" class="modal hidden justify-center items-center fixed z-10 inset-0 h-full w-full bg-blue-500">
             <div class="modal-contents">
                 <form method="POST" action="{{ route('create') }}">
                      @csrf
@@ -37,7 +37,7 @@
 
 <!--（ここから）追記1 -->
         <!-- カレンダー編集モーダル -->
-        <div id="modal-update" class="modal">
+        <div id="modal-update" class="modal hidden justify-center items-center fixed z-10 inset-0 h-full w-full bg-black bg-opacity-5">
             <div class="modal-contents">
                 <form method="POST" action="{{ route('update') }}">
                     @csrf
@@ -77,11 +77,8 @@
                     <input type="hidden" id="delete-id" name="id" value="" />
                     <button class="delete" type="button" onclick="deleteEvent()">削除</button>
                 </form>
-<!-- （ここまで） -->
- 
             </div>
         </div>
-<!--（ここまで） -->
         
 <!-- （ここから）追記2 -->
             <style scoped>
@@ -105,13 +102,12 @@
                 bottom: 0;
                 height: 100%;
                 width: 100%;
-                background-color: rgba(0,0,0,0.5);
+                /* background-color: rgba(0,0,0,0.5); */
+                background-color: blue;
             }
             /* モーダル */
             .modal-contents{
                 background-color: white;
-                height: 400px;
-                width: 600px;
                 padding: 20px;
             }
 
