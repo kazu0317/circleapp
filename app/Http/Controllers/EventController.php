@@ -167,6 +167,7 @@ class EventController extends Controller
                 'user_id' => $userId,
                 'event_id' => $eventId,
                 'status' => $request->input('action') === '参加' ? 1 : 0,
+                'actually_participated' => false, // 追加: デフォルトで false にする
             ]);
     
             // 新しいレコードが作成された場合、ユーザーの join_number を +1 する（参加した場合）
